@@ -5,10 +5,10 @@ import smtplib
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
 from email.MIMEBase import MIMEBase
-from email.import encoders
+from email import encoders
 from email.mime.image import MIMEImage
-fromaddr="raspberrypi7515@gmail.com"
-toaddr="naveendesai515jo@gmail.com"
+fromaddr="raspberrypimailadress@mail.com"  #use the raspberrypi mail address
+toaddr="usermailadress@mail.com"  #use the user mail adress
 mail=MIMEMultipart()
 mail['From']=fromaddr
 mail['To']=toaddr
@@ -32,7 +32,7 @@ def sendMail(data):
   image=MIMEImage(attachment.read())
   attachment.close()
   mail.attach(image)
-  server=smtplib.smtp('smtp.google.com',587)
+  server=smtplib.SMTP('smtp.google.com',587)
   server.starttls()
   server.login(fromaddr,"USER PASSWORD")
   text=mail.as_string()
